@@ -16,8 +16,6 @@ public interface IBillRepository extends CrudRepository<UPPCLHierarchy, Integer>
 
 	List<UPPCLHierarchy> findAll();
 
-	void deleteById(int id);
-
 	@Query("select discomName,zoneName,circleName,districtName,divisionName from genx.ewallet.model.UPPCLHierarchy")
 	public List<String> getAllBill();
 
@@ -29,7 +27,5 @@ public interface IBillRepository extends CrudRepository<UPPCLHierarchy, Integer>
 
 	@Query("select id,discomName,zoneName,circleName,districtName,divisionName from genx.ewallet.model.UPPCLHierarchy u where u.urbanDivisionCode = ?1 ")
 	public List<String> fndBillHierarchy1(String code);
-
-//	public List<UPPCLHierarchy> getAllNotes(long userId);
 
 }

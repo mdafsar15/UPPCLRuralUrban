@@ -33,11 +33,6 @@ public class BillController {
             + "</body></html>"; 
     } 
   
-    @GetMapping("/company") 
-    public List<UPPCLHierarchy> getAllNotes() 
-    { 
-        return repo.findAll(); 
-    } 
   
     @GetMapping("/company/{id}") 
     public UPPCLHierarchy getCompanyById( 
@@ -46,10 +41,6 @@ public class BillController {
         return repo.findById(id); 
     } 
   
-//    @GetMapping("/division") 
-//    public  List<String> getHierarchy1 (){
-//    	return billService.findId();
-//    }
     
     @GetMapping("/division")
 	public ResponseEntity<Response> getHierarchy() {
@@ -61,17 +52,8 @@ public class BillController {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Response("No Record Found", 400, null));
 	}
     
-    @GetMapping("/bill")
- 	public ResponseEntity<Response> getBill(@RequestParam("code") String code) {
- 		List<String> bill = billService.findBillRural(code);
- 		System.out.println("Bills for response : " + bill);
- 		if (!bill.isEmpty()) {
- 			return ResponseEntity.status(HttpStatus.OK).body(new Response("Bills are", 200, bill));
- 		}
- 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Response("No Record Found", 400, null));
- 	}
 
-    @GetMapping("/billUrban")
+    @GetMapping("/billUrbanRural")
  	public ResponseEntity<Response> getBillUrban(@RequestParam("area") String area,@RequestParam("code") String code) {
  		List<String> bill = billService.findBillRuralUrban(area,code);
  		System.out.println("Bills for response : " + bill);
